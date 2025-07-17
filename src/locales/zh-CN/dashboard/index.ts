@@ -1,0 +1,17 @@
+export const zhCN_dashboard = {
+'app.dashboard.overview.totalSales': 'إجمالي المبيعات',
+'app.dashboard.overview.visits': 'الزيارات',
+'app.dashboard.overview.payments': 'عدد المدفوعات',
+'app.dashboard.overview.operationalEffect': 'التأثير التشغيلي',
+'app.dashboard.overview.wowChange': 'التغيير الأسبوعي',
+'app.dashboard.overview.dodChange': 'التغيير اليومي',
+'app.dashboard.overview.dailySales': 'المبيعات اليومية',
+'app.dashboard.overview.visits.dailyVisits': 'الزيارات اليومية',
+'app.dashboard.overview.conversionRate': 'التحويل المعدل',
+'app.dashboard.salePercent.proportionOfSales':' نسبة   المبيعات',
+'app.dashboard.salePercent.all':'الكل' ,
+'app.dashboard.salePercent.online':'متصل' ,
+'app.dashboard.salePercent.offline':' غير متصل',
+'app.dashboard.timeline.traffic':' حجم حركة المرور',
+'app.dashboard.timeline.payments':' عدد الدفعات',
+};

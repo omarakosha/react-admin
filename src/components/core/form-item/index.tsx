@@ -1,0 +1,109 @@
+import type { FormItemProps } from 'antd/es/form';
+import type { FC } from 'react';
+
+import { Checkbox, DatePicker, Form, Input, InputNumber, Radio, Select, Switch } from 'antd';
+import React, { useMemo } from 'react';
+
+export type ControlTypes = 'input' | 'input-number' | 'switch' | 'date-picker' | 'checkbox' | 'radio' | 'select';
+
+type GetRCPropsType<T> = T extends (props: infer R) => any ? R : T extends React.ComponentClass<infer R> ? R : any;
+
+type InnerProps = {
+  input: GetRCPropsType<typeof Input>;
+  'input-number': GetRCPropsType<typeof InputNumber>;
+  switch: GetRCPropsType<typeof Switch>;
+  'date-picker': GetRCPropsType<typeof DatePicker>;
+  checkbox: GetRCPropsType<typeof Checkbox>;
+  radio: GetRCPropsType<typeof Radio>;
+  select: GetRCPropsType<typeof Select>;
+};
+
+export interface MyFormItemProps<T extends ControlTypes = ControlTypes> extends Omit<FormItemProps, 'required'> {
+  type?: T;
+/** يدعم عناصر التحكم في الخيارات مثل تحديد مربع الاختيار، وما إلى ذلك، غير مطلوب**/
+  options?: {
+    label: string;
+    value: any;
+    disabled?: boolean;
+  }[];
+/** التحكم في الخصائص الداخلية، غير مطلوب**/
+  innerProps?: InnerProps[T];
+  required?: string | boolean;
+}
+
+export class ControlMap {
+  props: MyFormItemProps;
+
+  constructor(props: MyFormItemProps) {
+    this.props = props;
+  }
+
+  get innerProps() {
+    return this.props.innerProps as object;
+  }
+
+  input() {
+    return <Input {...this.innerProps} />;
+  }
+
+  'input-number'() {
+    return <InputNumber {...this.innerProps} />;
+  }
+
+  switch() {
+    return <Switch {...this.innerProps} />;
+  }
+
+  'date-picker'() {
+    return <DatePicker {...this.innerProps} />;
+  }
+
+  checkbox() {
+    // highlight-next-line
+    return <Checkbox.Group children={this.props.children} options={this.props.options} {...this.innerProps} />;
+  }
+
+  radio() {
+    // highlight-next-line
+    return <Radio.Group children={this.props.children} options={this.props.options} {...this.innerProps} />;
+  }
+
+  select() {
+    // highlight-next-line
+    return <Select children={this.props.children} options={this.props.options} {...this.innerProps} />;
+  }
+}
+
+const MyformItem: FC<MyFormItemProps> = props => {
+  // أزل معلماتنا المخصصة، وأعد الباقي إلى `Form.Item` سليمًا
+// النوع: يُستخدم لتحديد نوع عنصر التحكم الذي تم تمريره من الخارج، ثم نقوم بمعالجته وتوليده مباشرةً
+// العناصر الفرعية: نظرًا لأننا نحتاج إلى تخصيص عناصر فرعية من `Form.Item`، إذا لم نزيلها ولكن يوفرها المكون الرئيسي، فسيكون هناك تعارض
+  const { type, required, rules: userRules, ...restProps } = props;
+
+  const rules = useMemo(() => {
+   // إذا تم تعيين سمة القواعد، فهذا يعني أن المستخدم يحتاج إلى تخصيص القواعد بالكامل، وليس فقط الحقول المطلوبة.
+    if (userRules) return userRules;
+
+  // إذا تم تعيين السمة المطلوبة
+    if (required) {
+      if (typeof required === 'boolean') {
+        return [{ required: true, message: `من فضلك أدخل ${props.label}` }];
+      }
+    // النص المطلوب المخصص
+      else if (typeof required === 'string') {
+        return [{ required: true, message: required }];
+      }
+    }
+  }, [required, userRules, props.label]);
+
+  // highlight-next-line
+  const controlMap = new ControlMap(props);
+
+  return (
+    <Form.Item {...restProps} rules={rules}>
+      {type ? controlMap[type]() : props.children}
+    </Form.Item>
+  );
+};
+
+export default MyformItem;

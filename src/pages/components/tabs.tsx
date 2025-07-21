@@ -5,11 +5,11 @@ import MyTabs from '@/components/business/tabs';
 
 const options: MyTabsOption[] = [
   {
-    label: 'Tab-1',
+    label: 'Sales',
     value: 1,
   },
   {
-    label: 'Tab-2',
+    label: 'Purchases',
     value: 2,
   },
 ];

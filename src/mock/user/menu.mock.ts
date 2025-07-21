@@ -6,7 +6,7 @@ const mockMenuList: MenuList = [
   {
     code: 'dashboard',
     label: {
-      zh_CN: 'الرئسية',
+      zh_CN: 'لوحة التحكم',
       en_US: 'Dashboard',
     },
     icon: 'dashboard',
@@ -60,8 +60,8 @@ const mockMenuList: MenuList = [
   {
     code: 'component',
     label: {
-      zh_CN: 'الكمبوننت',
-      en_US: 'Component',
+      zh_CN: 'ادارة العملاء',
+      en_US: 'CRM',
     },
     icon: 'permission',
     path: '/component',
@@ -69,16 +69,16 @@ const mockMenuList: MenuList = [
       {
         code: 'componentForm',
         label: {
-          zh_CN: 'الفورم',
-          en_US: 'Form',
+          zh_CN: 'اضافة عميل ',
+          en_US: 'Add Custmer',
         },
         path: '/component/form',
       },
       {
         code: 'componentTable',
         label: {
-          zh_CN: 'الجداول',
-          en_US: 'Table',
+          zh_CN: 'العملاء',
+          en_US: 'Custmers',
         },
         path: '/component/table',
       },
@@ -101,8 +101,8 @@ const mockMenuList: MenuList = [
       {
         code: 'componentTabs',
         label: {
-          zh_CN: 'فاتورة غير مدفوعة',
-          en_US: 'Tabs',
+          zh_CN: 'ادارة فاتورة',
+          en_US: 'invoice Managment',
         },
         path: '/component/tabs',
       },

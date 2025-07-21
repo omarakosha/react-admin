@@ -106,7 +106,7 @@ const HeaderComponent: FC<HeaderProps> = ({ collapsed, toggle }) => {
                   key: 'zh_CN',
                   icon: <ZhCnSvg />,
                   disabled: locale === 'zh_CN',
-                  label: '简体中文',
+                  label: 'عربي',
                 },
                 {
                   key: 'en_US',

@@ -1,1 +1,0 @@
-import{M as s}from"./index.7ff1ce7b.js";import{j as e}from"./vendor.05ff05e8.js";const a=[{label:"Sales",value:1},{label:"Purchases",value:2}],l=()=>e("div",{children:e(s,{options:a})});export{l as default};

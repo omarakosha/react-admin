@@ -138,7 +138,6 @@ const FormPage: FC = () => {
         setSelectedRowIndex(index);
         setShowCostCenterModal(true);
       }
-      // action === 'none' لا يفتح أي شيء عند F9
     } else if (e.key === 'Enter') {
       e.preventDefault();
       addRow();
@@ -167,11 +166,7 @@ const FormPage: FC = () => {
       return;
     }
 
-    console.log('📦 تم حفظ القيد:', {
-      journalNumber,
-      meta,
-      entries,
-    });
+    console.log('📦 تم حفظ القيد:', { journalNumber, meta, entries });
     message.success('تم حفظ القيد بنجاح!');
 
     setMeta({ date: getTodayDate(), description: '' });
@@ -231,7 +226,7 @@ const FormPage: FC = () => {
         <Input
           value={entries[index].internalDescription}
           onChange={(e) => updateCell(index, 'internalDescription', e.target.value)}
-          onKeyDown={(e) => handleKeyPress(e, 'none', index)} // لا تفتح شيء عند F9
+          onKeyDown={(e) => handleKeyPress(e, 'none', index)}
           placeholder="بيان القيد"
         />
       ),
@@ -279,7 +274,7 @@ const FormPage: FC = () => {
         <Input
           value={entries[index].supplierNumber}
           onChange={(e) => updateCell(index, 'supplierNumber', e.target.value)}
-          onKeyDown={(e) => handleKeyPress(e, 'none', index)} // لا تفتح شيء عند F9
+          onKeyDown={(e) => handleKeyPress(e, 'none', index)}
           placeholder="رقم المورد"
         />
       ),
@@ -299,16 +294,16 @@ const FormPage: FC = () => {
   ];
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 12 }}>
       <h2>إدخال قيد اليومية</h2>
       <Form layout="vertical" form={form}>
-        <Row gutter={16}>
-          <Col span={6}>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} sm={12} md={6}>
             <Form.Item label="رقم القيد">
               <Input value={journalNumber} disabled />
             </Form.Item>
           </Col>
-          <Col span={6}>
+          <Col xs={24} sm={12} md={6}>
             <Form.Item label="تاريخ القيد" required>
               <Input
                 type="date"
@@ -317,7 +312,7 @@ const FormPage: FC = () => {
               />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={24} md={12}>
             <Form.Item label="وصف القيد" required>
               <Input
                 value={meta.description}
@@ -343,7 +338,7 @@ const FormPage: FC = () => {
         dataSource={entries}
         pagination={false}
         rowKey="key"
-        scroll={{ y: 300 }}
+        scroll={{ x: 'max-content', y: 300 }}
       />
 
       <div style={{ marginTop: 20, textAlign: 'center' }}>
@@ -352,7 +347,6 @@ const FormPage: FC = () => {
         </Button>
       </div>
 
-      {/* مودال اختيار الحساب */}
       <Modal
         open={showAccountModal}
         onCancel={() => setShowAccountModal(false)}
@@ -385,7 +379,6 @@ const FormPage: FC = () => {
         />
       </Modal>
 
-      {/* مودال اختيار مركز التكلفة */}
       <Modal
         open={showCostCenterModal}
         onCancel={() => setShowCostCenterModal(false)}

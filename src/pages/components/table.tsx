@@ -131,15 +131,20 @@ const TalbePage: FC = () => {
 
         {/* رأس الصفحة */}
         <div className="flex flex-row items-center justify-between gap-4 mb-4">
+
+          <Space style={{ marginBottom: 10 }}>
           <Button
             type="primary"
             icon={<PlusOutlined />}
             onClick={handleAdd}
             className="bg-blue-600"
           >
-            إضافة جديد
+            إضافة عميل
           </Button>
 
+          </Space>
+
+         
           <Input
             placeholder="🔍 ابحث بالاسم أو العنوان"
             prefix={<SearchOutlined />}
@@ -278,3 +283,4 @@ const TalbePage: FC = () => {
 };
 
 export default TalbePage;
+

@@ -1,4 +1,3 @@
-
 import type { FC } from 'react';
 import { useState } from 'react';
 import {
@@ -123,7 +122,6 @@ const SalesInvoicesPage: FC = () => {
     <div className="min-h-screen bg-gray-50 p-6 flex justify-center items-start">
       <div className="w-full max-w-6xl bg-white p-6 rounded-2xl shadow-md">
         <div className="flex flex-row items-center justify-between gap-4 mb-4">
-
           <Space style={{ marginBottom: 10 }}>
             <Button
               type="primary"
@@ -136,10 +134,7 @@ const SalesInvoicesPage: FC = () => {
             >
               إضافة فاتورة مبيعات
             </Button>
-
           </Space>
-
-
 
           <Input
             placeholder="🔍 ابحث برقم الفاتورة أو اسم العميل"
@@ -152,62 +147,68 @@ const SalesInvoicesPage: FC = () => {
           />
         </div>
 
-        <MyTable<InvoiceType>
-          dataSource={filteredData}
-          rowKey={record => record.key}
-          className="rounded-xl border border-gray-200"
-          pagination={{ pageSize: 10, showQuickJumper: true, position: ['bottomCenter'] }}
-          scroll={{ y: 500 }}
-          rowClassName={() => 'hover:bg-blue-50 transition duration-200 text-center'}
-        >
-          <Column title="رقم الفاتورة" dataIndex="invoiceNumber" key="invoiceNumber" />
-          <Column title="اسم العميل" dataIndex="customerName" key="customerName" />
-          <Column title="المبلغ" dataIndex="amount" key="amount" />
-          <Column
-            title="الحالة"
-            dataIndex="status"
-            key="status"
-            render={(status: string) => <Tag color={getStatusColor(status)}>{status}</Tag>}
-          />
-          <Column
-            title="التصنيفات"
-            dataIndex="tags"
-            key="tags"
-            render={(tags: string[]) => (
-              <>
-                {tags.map(tag => (
-                  <Tag color="blue" key={tag}>{tag}</Tag>
-                ))}
-              </>
-            )}
-          />
-          <Column
-            title="الإجراءات"
-            key="action"
-            render={(_, record: InvoiceType) => (
-              <Space size="middle">
-                <Tooltip title="تعديل">
-                  <Button
-                    shape="circle"
-                    icon={<EditOutlined />}
-                    onClick={() => {
-                      setEditingInvoice(record);
-                      setModalOpen(true);
-                    }}
-                  />
-                </Tooltip>
-                <Tooltip title="حذف">
-                  <Button
-                    shape="circle"
-                    icon={<DeleteOutlined />}
-                    onClick={() => handleDelete(record)}
-                    style={{ backgroundColor: '#fff1f0', border: 'none', color: '#ff4d4f' }}
-                  />
-                </Tooltip>
-              </Space>
-            )}
-          />
-        </MyTable>
+        {/* تغليف الجدول ليصبح قابل للتمرير الأفقي */}
+        <div className="overflow-x-auto">
+          <MyTable<InvoiceType>
+            dataSource={filteredData}
+            rowKey={record => record.key}
+            className="rounded-xl border border-gray-200 min-w-[900px]"
+            pagination={{ pageSize: 10, showQuickJumper: true, position: ['bottomCenter'] }}
+            scroll={{ x: 'max-content' }} // حذف scroll.y أو ضبطه حسب الحاجة
+            rowClassName={() => 'hover:bg-blue-50 transition duration-200 text-center'}
+          >
+            <Column title="رقم الفاتورة" dataIndex="invoiceNumber" key="invoiceNumber" width={120} />
+            <Column title="اسم العميل" dataIndex="customerName" key="customerName" width={180} />
+            <Column title="المبلغ" dataIndex="amount" key="amount" width={100} />
+            <Column
+              title="الحالة"
+              dataIndex="status"
+              key="status"
+              width={120}
+              render={(status: string) => <Tag color={getStatusColor(status)}>{status}</Tag>}
+            />
+            <Column
+              title="التصنيفات"
+              dataIndex="tags"
+              key="tags"
+              width={150}
+              render={(tags: string[]) => (
+                <>
+                  {tags.map(tag => (
+                    <Tag color="blue" key={tag}>{tag}</Tag>
+                  ))}
+                </>
+              )}
+            />
+            <Column
+              title="الإجراءات"
+              key="action"
+              width={110}
+              render={(_, record: InvoiceType) => (
+                <Space size="middle">
+                  <Tooltip title="تعديل">
+                    <Button
+                      shape="circle"
+                      icon={<EditOutlined />}
+                      onClick={() => {
+                        setEditingInvoice(record);
+                        setModalOpen(true);
+                      }}
+                    />
+                  </Tooltip>
+                  <Tooltip title="حذف">
+                    <Button
+                      shape="circle"
+                      icon={<DeleteOutlined />}
+                      onClick={() => handleDelete(record)}
+                      style={{ backgroundColor: '#fff1f0', border: 'none', color: '#ff4d4f' }}
+                    />
+                  </Tooltip>
+                </Space>
+              )}
+            />
+          </MyTable>
+        </div>
 
         <InvoiceModalpopup
           open={modalOpen}
@@ -226,4 +227,3 @@ const SalesInvoicesPage: FC = () => {
 };
 
 export default SalesInvoicesPage;
-

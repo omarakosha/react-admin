@@ -14,14 +14,15 @@ const mockMenuList: MenuList = [
   },
   
   {
-        code: 'ReportsPage',
-        label: {
-          zh_CN: 'التقارير ',
-          en_US: 'Reports ',
-        },
-         icon: 'documentation',
-        path: '/component/ReportsPage',
-      },
+  code: 'ReportsPage',
+  label: {
+    zh_CN: 'التقارير',
+    en_US: 'Reports',
+  },
+  icon: 'documentation',
+  path: '/reports',
+},
+
 
 
     {

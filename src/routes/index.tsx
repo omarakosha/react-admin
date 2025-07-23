@@ -108,9 +108,11 @@ const routeList: RouteObject[] = [
         element: <WrapperRouteComponent element={<NotFound />} titleId="title.notFount" />,
       },
       {
-  path: 'component/ReportsPage',
+  path: 'reports',
   element: <WrapperRouteComponent element={<ReportsPage />} titleId="title.reports" />,
 }
+
+      
 
     ],
   },

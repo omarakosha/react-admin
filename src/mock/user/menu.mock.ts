@@ -12,6 +12,18 @@ const mockMenuList: MenuList = [
     icon: 'dashboard',
     path: '/dashboard',
   },
+  
+  {
+        code: 'ReportsPage',
+        label: {
+          zh_CN: 'التقارير ',
+          en_US: 'Reports ',
+        },
+         icon: 'documentation',
+        path: '/component/ReportsPage',
+      },
+
+
     {
     code: 'component',
     label: {
@@ -45,6 +57,7 @@ const mockMenuList: MenuList = [
         },
         path: '/component/tabs',
       },
+       
      /*
       {
         code: 'componentSearch',
@@ -74,6 +87,7 @@ const mockMenuList: MenuList = [
       */
     ],
   },
+
 
   /*
   {

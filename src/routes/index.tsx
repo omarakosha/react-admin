@@ -24,6 +24,7 @@ const RadioCardsPage = lazy(() => import(/* webpackChunkName: "radio-cards'"*/ '
 const BusinessBasicPage = lazy(() => import(/* webpackChunkName: "basic-page" */ '@/pages/business/basic'));
 const BusinessWithSearchPage = lazy(() => import(/* webpackChunkName: "with-search" */ '@/pages/business/with-search'));
 const BusinessWithAsidePage = lazy(() => import(/* webpackChunkName: "with-aside" */ '@/pages/business/with-aside'));
+const ReportsPage = lazy(() => import('@/pages/components/ReportsPage'));
 const BusinessWithRadioCardsPage = lazy(
   () => import(/* webpackChunkName: "with-aside" */ '@/pages/business/with-radio-cards'),
 );
@@ -106,6 +107,11 @@ const routeList: RouteObject[] = [
         path: '*',
         element: <WrapperRouteComponent element={<NotFound />} titleId="title.notFount" />,
       },
+      {
+  path: 'component/ReportsPage',
+  element: <WrapperRouteComponent element={<ReportsPage />} titleId="title.reports" />,
+}
+
     ],
   },
 ];

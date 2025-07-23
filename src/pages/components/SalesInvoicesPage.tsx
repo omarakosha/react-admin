@@ -1,4 +1,4 @@
-// ✅ SalesInvoicesPage.tsx
+
 import type { FC } from 'react';
 import { useState } from 'react';
 import {
@@ -123,17 +123,23 @@ const SalesInvoicesPage: FC = () => {
     <div className="min-h-screen bg-gray-50 p-6 flex justify-center items-start">
       <div className="w-full max-w-6xl bg-white p-6 rounded-2xl shadow-md">
         <div className="flex flex-row items-center justify-between gap-4 mb-4">
-          <Button
-            type="primary"
-            icon={<PlusOutlined />}
-            onClick={() => {
-              setEditingInvoice(null);
-              setModalOpen(true);
-            }}
-            className="bg-blue-600"
-          >
-            إضافة فاتورة مبيعات
-          </Button>
+
+          <Space style={{ marginBottom: 10 }}>
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              onClick={() => {
+                setEditingInvoice(null);
+                setModalOpen(true);
+              }}
+              className="bg-blue-600"
+            >
+              إضافة فاتورة مبيعات
+            </Button>
+
+          </Space>
+
+
 
           <Input
             placeholder="🔍 ابحث برقم الفاتورة أو اسم العميل"
@@ -221,5 +227,3 @@ const SalesInvoicesPage: FC = () => {
 
 export default SalesInvoicesPage;
 
-// ✅ PurchaseInvoicesPage.tsx (نفس الكود السابق مع تغيير type="purchase" و دعم إدخال رقم الفاتورة يدويًا)
-// فقط قم بتغيير المتغيرات حسب الحاجة بنفس الأسلوب الذي اتبعناه أعلاه

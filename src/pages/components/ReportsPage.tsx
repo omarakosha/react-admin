@@ -13,27 +13,7 @@ import {
 } from '../reports';
 
 const ReportsPage: React.FC = () => {
-  const [fromDate, setFromDate] = useState<Dayjs | null>(null);
-  const [toDate, setToDate] = useState<Dayjs | null>(null);
 
-  const dateFilterBar = (
-    <div style={{ marginBottom: 16, textAlign: 'center' }}>
-      <Space>
-        <DatePicker
-          placeholder="من تاريخ"
-          onChange={date => setFromDate(date)}
-          format="YYYY-MM-DD"
-          allowClear
-        />
-        <DatePicker
-          placeholder="إلى تاريخ"
-          onChange={date => setToDate(date)}
-          format="YYYY-MM-DD"
-          allowClear
-        />
-      </Space>
-    </div>
-  );
 
   const items: TabsProps['items'] = [
     { key: '1', label: 'الحسابات', children: <AccountsReport /> },

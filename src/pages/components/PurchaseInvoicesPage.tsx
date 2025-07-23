@@ -1,4 +1,4 @@
-// ✅ PurchaseInvoicesPage.tsx
+
 import type { FC } from 'react';
 import { useState } from 'react';
 import {
@@ -123,6 +123,7 @@ const PurchaseInvoicesPage: FC = () => {
     <div className="min-h-screen bg-gray-50 p-6 flex justify-center items-start">
       <div className="w-full max-w-6xl bg-white p-6 rounded-2xl shadow-md">
         <div className="flex flex-row items-center justify-between gap-4 mb-4">
+           <Space style={{ marginBottom: 10 }}>
           <Button
             type="primary"
             icon={<PlusOutlined />}
@@ -135,6 +136,8 @@ const PurchaseInvoicesPage: FC = () => {
             إضافة فاتورة مشتريات
           </Button>
 
+      </Space>
+       
           <Input
             placeholder="🔍 ابحث برقم الفاتورة أو اسم المورد"
             prefix={<SearchOutlined />}

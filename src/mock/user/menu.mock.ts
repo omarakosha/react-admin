@@ -12,6 +12,70 @@ const mockMenuList: MenuList = [
     icon: 'dashboard',
     path: '/dashboard',
   },
+    {
+    code: 'component',
+    label: {
+      zh_CN: 'ادارة العملاء',
+      en_US: 'CRM',
+    },
+    icon: 'permission',
+    path: '/component',
+    children: [
+       {
+        code: 'componentTable',
+        label: {
+          zh_CN: 'العملاء',
+          en_US: 'Custmers',
+        },
+        path: '/component/table',
+      },
+      {
+        code: 'componentForm',
+        label: {
+          zh_CN: 'القيود',
+          en_US: 'Alquyud',
+        },
+        path: '/component/form',
+      },
+       {
+        code: 'componentTabs',
+        label: {
+          zh_CN: 'ادارة فاتورة',
+          en_US: 'invoice Managment',
+        },
+        path: '/component/tabs',
+      },
+     /*
+      {
+        code: 'componentSearch',
+        label: {
+          zh_CN: 'البحث',
+          en_US: 'Search',
+        },
+        path: '/component/search',
+      },
+      {
+        code: 'componentAside',
+        label: {
+          zh_CN: 'الشريط الجانبي',
+          en_US: 'Aside',
+        },
+        path: '/component/aside',
+      },
+     
+      {
+        code: 'componentRadioCards',
+        label: {
+          zh_CN: 'بطاقة الراديو',
+          en_US: 'Radio Cards',
+        },
+        path: '/component/radio-cards',
+      },
+      */
+    ],
+  },
+
+  /*
   {
     code: 'documentation',
     label: {
@@ -29,7 +93,8 @@ const mockMenuList: MenuList = [
     },
     icon: 'guide',
     path: '/guide',
-  },
+  },*/
+
   {
     code: 'permission',
     label: {
@@ -57,65 +122,7 @@ const mockMenuList: MenuList = [
       },
     ],
   },
-  {
-    code: 'component',
-    label: {
-      zh_CN: 'ادارة العملاء',
-      en_US: 'CRM',
-    },
-    icon: 'permission',
-    path: '/component',
-    children: [
-      {
-        code: 'componentForm',
-        label: {
-          zh_CN: 'اضافة عميل ',
-          en_US: 'Add Custmer',
-        },
-        path: '/component/form',
-      },
-      {
-        code: 'componentTable',
-        label: {
-          zh_CN: 'العملاء',
-          en_US: 'Custmers',
-        },
-        path: '/component/table',
-      },
-      {
-        code: 'componentSearch',
-        label: {
-          zh_CN: 'البحث',
-          en_US: 'Search',
-        },
-        path: '/component/search',
-      },
-      {
-        code: 'componentAside',
-        label: {
-          zh_CN: 'الشريط الجانبي',
-          en_US: 'Aside',
-        },
-        path: '/component/aside',
-      },
-      {
-        code: 'componentTabs',
-        label: {
-          zh_CN: 'ادارة فاتورة',
-          en_US: 'invoice Managment',
-        },
-        path: '/component/tabs',
-      },
-      {
-        code: 'componentRadioCards',
-        label: {
-          zh_CN: 'بطاقة الراديو',
-          en_US: 'Radio Cards',
-        },
-        path: '/component/radio-cards',
-      },
-    ],
-  },
+
 
   {
     code: 'business',
